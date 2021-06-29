@@ -1,0 +1,20 @@
+<section class="container px-2 py-1">
+  {{#each products}}
+    <div class="container border my-3 bg-light  w-100 p-3">
+      <p class="">Order id: {{this._id}}</p>
+      <p>Order placed on {{this.date}}</p>
+      <p><span>Total amount</span>: ₹{{this.totalAmount}}</p>
+      <p><span>Address</span>:
+        {{this.deliveryDetails.address}}{{this.deliveryDetails.phone_number}}{{this.deliveryDetails.pincode}}</p>
+      <p><span>Payment method</span>: {{this.paymentMethod}}</p>
+      <p><span>Status</span>: {{this.status}}</p>
+      <a href="/orderDetails/{{this._id}}">
+        <button class="btn btn-primary">view products</button>
+      </a>
+    </div>
+  {{/each}}
+</section>
+
+<style>
+  span{ font-weight: bold; }
+</style>

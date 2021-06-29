@@ -1,0 +1,20 @@
+<div class="container">
+  {{#each products}}
+    <div class="row px-2 py-4 border-bottom">
+      <div class="col">
+        <img height="200" src={{this.product.image}} alt="" />
+      </div>
+      <div class="col">
+        <p><span>Title</span>: {{this.product.title}}</p>
+        <p><span>Quantity</span>: {{this.quantity}}</p>
+        <p><span>Price</span>: ₹{{this.product.price}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<style>
+    span{
+        font-weight: bold;
+    }
+</style>

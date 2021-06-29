@@ -1,0 +1,72 @@
+<section class="container">
+  {{! header }}
+  <div class="d-flex justify-content-center p-5">
+    <a href="/admin/add-product">
+      <button class="btn btn-primary">Add product</button></a>
+
+  </div>
+  <h1>All products</h1>
+  {{! table }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each response}}
+        <tr>
+          <td><img style="height: 100px;" src={{this.image}} alt="" /></td>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}o</td>
+          <td>₹{{this.price}}</td>
+          <td>
+            <a href="/admin/delete-product/{{this._id}}">
+              <button class="btn btn-danger">remove</button>
+            </a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <h1 class="py-4">All users</h1>
+  <h5 class="text-end">no. of users:{{userCount}}</h5>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Blocked</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr>
+          <td>{{this.username}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.blocked}}</td>
+          <td>
+            <a href="/admin/remove-user/{{this._id}}">
+              <button class="btn btn-danger">Remove</button>
+            </a>
+          </td>
+          <td>
+            {{#if this.blocked}}
+              <a href="/admin/unBlock-user/{{this._id}}">
+                <button class="btn btn-danger">Unblock</button>
+              </a>
+            {{else}}
+              <a href="/admin/block-user/{{this._id}}">
+                <button class="btn btn-danger">Block</button>
+              </a>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

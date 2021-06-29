@@ -1,0 +1,75 @@
+<script src="../javascripts/changeQuantity.js"></script>
+<section>
+  {{#if count}}
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">
+            Image
+          </th>
+          <th scope="col">
+            Title
+          </th>
+          <th scope="col">
+            quantity
+          </th>
+          <th scope="col">
+            Price
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each response}}
+          <tr>
+            <th scope="row">
+              <img style="height: 100px;" src={{this.product.image}} alt="" />
+            </th>
+            <td>
+              {{this.product.title}}
+            </td>
+            <td class="d-flex align-items-center">
+              <button
+                onclick="changeQuantity('{{this.product._id}}','{{this.quantity}} ',-1)"
+                class="btn btn-secondary"
+              >
+                -
+              </button>
+              <span id="quantityID" class="mx-2">
+                {{this.quantity}}
+              </span>
+              <button
+                onclick="changeQuantity('{{this.product._id}}','{{this.quantity}}',1)"
+                class="btn btn-secondary"
+              >
+                +
+              </button>
+            </td>
+            <td>
+              <a href="/remove-product/{{this.product._id}}">
+                <button class="btn btn-danger">remove</button>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="">
+        SubTotal:₹
+        {{total}}
+      </h1>
+      <a href="/checkout">
+        <button class="btn btn-warning btn-lg">
+          Proceed
+        </button>
+      </a>
+
+    </div>
+  {{else}}
+    <h1 class="text-center pt-5">
+      Your basket is empty😞
+    </h1>
+  {{/if}}
+</section>
